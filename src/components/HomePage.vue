@@ -1,26 +1,21 @@
-<template>
+<template>  
 <div class="homepage">
   <div class="title">
       <img src="../assets/homepage/images/banner.png">
   </div>
   <div class="manager">
-      
           <div class="project">
               <router-link to="/product">
               <img src="../assets/homepage/images/project.png" alt="">
               <span>施工项目</span>
             </router-link>
             </div>
-      
-      
           <div class="contract">
               <router-link to="/contract">
               <img src="../assets/homepage/images/contract.png" alt="">
               <span>合约管理</span>
             </router-link>
           </div>
-      
-      
       <div class="order">
           <img src="../assets/homepage/images/order.png" alt="">
           <span>订单管理</span>
@@ -33,17 +28,18 @@
           <img src="../assets/homepage/images/suggestion.png" alt="">
           <span>投诉建议</span>
       </div>
+     
   </div>
-  <div class="center_line">
+   <div class="center_line">
 
-  </div>
+    </div>
   <div class="trends">
       <div class="trends_title">
         <div class="trends_icon">
           <div class="trends_span">动态</div>
         </div>
       </div>
-      <div class="trends_container"></div>
+      <div class="trends_container">{{trends}}</div>
   </div>
   
   <div class="footer_line"></div>
@@ -61,7 +57,7 @@
           <img src="../assets/homepage/images/my.png" alt="">
       </div>
   </div>
-  <router-view></router-view>
+  
 </div>
 </template>
 
@@ -69,7 +65,19 @@
 export default {
   name: 'HomePage',
   props: {
-    msg: String
+    msg: String,
+  },
+  data(){
+    return {
+      trends:{
+
+      }
+    }
+  },
+  created(){
+    this.$jsonp('https://api.douban.com/v2/movie/search?tag=喜剧').then((response) => {
+      this.trends = response.subjects.length
+    });
   }
 }
 </script>
@@ -77,8 +85,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   /*百分比布局,flex布局*/
+ 
+  .homepage {
+    min-height:100%;margin:0;padding:0;position:relative;
+  }
   .title{
-    height: 50%;
+    height:210px
   }
   .manager{
     display: grid;
@@ -87,34 +99,44 @@ export default {
     justify-items: center;
     align-items: center;
     grid-row-gap: 12px;
-    height: 20%;
-  }
-  .trends{
-    height: 160px;
+    height:220px;
+    border:1px solid red;
   }
 
+  .center_line{
+    background-color: #F3F3F3;
+    border:1px solid red;
+    height:4px;
+  }
+
+  .trends{
+     height:180px;
+     border:1px solid red;
+  }
+  .trends_container{
+    
+  }
   .footer{
-    height: 50px;
     display: flex;
     flex-direction: row;
     justify-content:space-around;
     justify-items: center;
     align-items: center;
-    margin-top:6px
+    height:60px;
+    border:1px solid red;
+    position:absolute;bottom:0;width:100%;background-color: #ffc0cb;
   }
   .footer_line{
-    height: 14px;
     background-color: #F3F3F3;
+    border:1px solid blue;
+    height:20px
   }
+  
   .trends_title{
     margin-left: 2%;
     margin-top: 3%
   }
-  .center_line{
-    height: 5px;
-    background-color: #F3F3F3;
-    margin-top: 10%
-  }
+
   .homepage_footer{
     display: flex;
     justify-content: center;
@@ -163,7 +185,7 @@ export default {
   .manager span {
     color: #8D8D8D;
     font-weight: bold;
-    font-size: 12px;
+    border:1px solid red;
   }
   .footer img {
     width: 30%;
@@ -175,25 +197,26 @@ export default {
     width: 100%;
   }
   .project{
-    width: 39%;
-    height: 55%;
+    width: 45%;
+    height: 70%;
+    border: 1px solid red;
   }
 
   .contract{
-    width: 39%;
-    height: 55%;
+    width: 45%;
+    height: 70%;
   }
   .order{
-    width: 39%;
-    height: 55%
+   width: 45%;
+    height: 70%;
   }
   .takeover{
-    width: 39%;
-    height: 55%;
+    width: 45%;
+    height: 70%;
   }
   .suggestion{
-    width: 39%;
-    height: 55%;
+    width: 45%;
+    height: 70%;
   }
   
 </style>
