@@ -189,9 +189,11 @@ export default {
   }
   
   .manager span {
+    display: inline-block;
     color: #8D8D8D;
     font-weight: bold;
-    border:1px solid red;
+    font-size: 12px;
+    width: 50px;
   }
   .footer img {
     width: 30%;
@@ -205,7 +207,6 @@ export default {
   .project{
     width: 45%;
     height: 70%;
-    border: 1px solid red;
   }
 
   .contract{
