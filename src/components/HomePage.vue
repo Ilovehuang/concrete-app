@@ -1,8 +1,12 @@
 <template>  
 <div class="homepage">
+  <!--标题-->
   <div class="title">
       <img src="../assets/homepage/images/banner.png">
   </div>
+
+  <!--管理部分-->
+
   <div class="manager">
           <div class="project">
               <router-link to="/product">
@@ -30,9 +34,11 @@
       </div>
      
   </div>
-   <div class="center_line">
 
-    </div>
+  <!--中间线-->
+  <div class="center_line"></div>
+
+  <!--动态-->
   <div class="trends">
       <div class="trends_title">
         <div class="trends_icon">
@@ -42,7 +48,10 @@
       <div class="trends_container">{{trends}}</div>
   </div>
   
-  <div class="footer_line"></div>
+ <!--底部线-->
+  <!-- <div class="footer_line"></div> -->
+
+  <!--底部栏-->
   <div class="footer">
       <div class="homepage_footer">
           <img src="../assets/homepage/images/homepage_footer.png" alt="">
@@ -85,12 +94,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   /*百分比布局,flex布局*/
- 
+  
   .homepage {
     min-height:100%;margin:0;padding:0;position:relative;
   }
   .title{
-    height:210px
+    height:210px;
   }
   .manager{
     display: grid;
@@ -100,21 +109,19 @@ export default {
     align-items: center;
     grid-row-gap: 12px;
     height:220px;
-    border:1px solid red;
   }
 
   .center_line{
     background-color: #F3F3F3;
-    border:1px solid red;
     height:4px;
   }
 
   .trends{
-     height:180px;
-     border:1px solid red;
+    height: 180px;
   }
   .trends_container{
-    
+    height: 100%;
+
   }
   .footer{
     display: flex;
@@ -123,13 +130,12 @@ export default {
     justify-items: center;
     align-items: center;
     height:60px;
-    border:1px solid red;
-    position:absolute;bottom:0;width:100%;background-color: #ffc0cb;
+    position:absolute;bottom:0;width:100%;
+    border-top:20px solid #F3F3F3
   }
   .footer_line{
     background-color: #F3F3F3;
-    border:1px solid blue;
-    height:20px
+    height:20px;
   }
   
   .trends_title{
